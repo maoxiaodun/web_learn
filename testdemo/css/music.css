@@ -1,0 +1,21 @@
+	 .circle
+			 {    		
+				-webkit-animation-name:myfirst;
+			    -webkit-animation-duration: 5s;
+			    -webkit-animation-timing-function: linear;
+			    -webkit-animation-delay: 2s;
+			    -webkit-animation-iteration-count: infinite;
+			    -webkit-animation-direction:normal;
+			    -webkit-animation-play-state:paused;
+		      }
+		     @-webkit-keyframes myfirst
+		     {     	
+				0% {-webkit-transform: rotate(0deg);}
+				100% {-webkit-transform: rotate(360deg);}
+			 }
+			     /*.progress{position: relative; width:300px;margin:100px auto;}*/
+		        .progress_bg{height: 3px; border: 1px solid #ddd; overflow: hidden;background-color:#f2f2f2;}
+		        .progress_bar{background: #5FB878; width: 0; height: 3px; border-radius: 5px;}
+		        .progress_btn{width: 10px; height: 10px; position: absolute;background:green; border-radius: 5px 5px 5px 5px;
+		        left: 0px; margin-left: 12px; margin-top: 2px; top:-5px; cursor: pointer;border:1px #ddd solid;box-sizing:border-box;}
+		        .progress_btn:hover{border-color:#F7B824;}
