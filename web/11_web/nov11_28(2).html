@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js正则表达学习二</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 时间：2018.11.28 下午
+		 * 作者：刘进文
+		 * 内容描述：正则表达式学习
+		 */
+		//1.量词 {n} 匹配n次 {n,m}至少n次，至多m次 {n,}至少n次  {？} 相当于{0,1}次 *多次 +至少一次
+		var head = /<[^<>]+>/; // 匹配<>开头，且里面没有<>的字符
+		console.log(head.test("<head>"));
+		console.log(/https?/.test('https'));
+		console.log(/a+?/.exec('aaa'));
+		// +贪婪模式，一旦匹配到相关字符，会匹配到结束，？懒惰模式 一旦匹配到满足条件的就不往下匹配了
+		console.log(/(ab){2}/.test('abab'));
+		console.log(/ab{2}/.test('abab'));// ()括号会将里面的内容成为一个子表达式
+		//匹配邮箱
+		var p =/\w{1,64}@([a-zA-Z0-9]{1,63}\.)+[a-zA-Z0-9]{1,63}/
+		console.log(p.test("2532546897@qq.bb.cc.com"))
+		// 用户名 \w{1,64} 64位 数字字母下划线，  @ ([a-zA-Z0-9]{1,63}\.)+ 匹配一次或则多次 ***.
+		console.log('2008-11-5'.replace(/-/g,'.')); //replace 直接替换
+		console.log(/([a-z])\1/.test('aa'));//true 检查重叠字母 \num
+		console.log(/<([^>]+)>[\s\S]*?<\/\1>/.test('<a>123</a>'));//true 匹配标签
+		 /* (00)?\d; //0-9
+			0?[1-9]\d;//10-99
+			1\d{2}?;//100-199
+			/1\d{1}/ 10-199
+			2[0-4]\d;//200-249
+			25[0-5];//250-255
+	    //数字(0-255)
+		/(00)?\d|0?[1-9]\d|1\d{2}|2[0-4]\d|25[0-5]/;匹配ip	*/ 
+		 var t = /[1-9][0-9]{1}?/ ;
+	     console.log(t.test("1000") +"1");
+	</script>
+</html>

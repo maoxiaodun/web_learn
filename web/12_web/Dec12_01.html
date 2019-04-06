@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js学习之闭包</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 时间 ： 2019.12.01 上午
+		 * 作者 ： 刘进文
+		 * 内容描述 ： js闭包学习
+		 */
+		 function a(){
+		 	var c= 2;
+		 	var b = function(){
+		 		console.log(c);
+		 	}
+		 	b();
+		 }
+		 a();// 形成闭包
+		 function foo(){
+		 	var a = 2;
+		 	function bar(){
+		 		console.log(a);
+		 	}
+		 	test(bar);
+		 }
+		 function test(fn){
+		 	fn();
+		 }
+		 foo();
+		 //内层函数调用了上层函数的变量
+	</script>
+</html>

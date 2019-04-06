@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js学习之正则匹配</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 时间 ： 2017.11.28 下午
+		 * 作者 ： 刘进文
+		 * 内容描述 ： js学习正则匹配
+		 */
+		//1.匹配模式 匹配表达式 为 /内容/
+		 var exp = /as/g;//(pattern:所要匹配的表达式，flags:所要匹配的模式 g 全局匹配 i 不区分大小写 m 多行匹配)
+		 console.log(exp.test('asted')); //true 
+		 var exp2 = /123/g;
+		 var reg = new RegExp('123','g'); // es5 
+		 console.log(/156/.test('1563'));
+		 console.log(/ 156/.test('1563'));
+		 //2.元字符  () [] {} \ ^ $ | ? * + .  匹配元字符需要转移字符\
+		 console.log(/1+1/.test('1+1'));//false
+		 console.log(/1\+1/.test('1+1'));
+		 console.log(/]/.test(']'))// true [] {} 不需要转义
+		 //3.字符组
+		 var arr = /[123456789]/; //等加与[0-9] /d
+		 arr.test('1235');// true
+		 console.log(/[0-9]/.test(89)); 
+		 console.log(/\d/.test(9));  // \d \w \s 等表示数字 字母数字下划线  空白字符  大写则是进行非运算
+		 console.log(/[0-9][0-9]/.test('^p'));
+		 console.log(/[0-9^]/.test('^'));
+		 var Exp = /\d{6}/; // 匹配六位数字
+		 console.log(Exp.test('689547'));
+		 var pho =/[181][\d{8}]/
+		 console.log(pho.test('13154869566') );
+	</script>
+</html>

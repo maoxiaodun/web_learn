@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js之函数节流防抖</title>
+		<style>
+        * {padding: 0; margin: 0;}
+        .box {width: 800px;height: 1200px;}
+</style>
+	</head>
+	<body>
+		<div class="container">
+        <div class="box" style="background: black"></div>
+        <div class="box" style="background: blue"></div>
+        
+	</body>
+	<script>
+		/*
+		 * 时间 ：2018.12.17
+		 * 作者 : 刘文静
+		 * 内容描述 ： js之函数防抖
+		 *  
+		 */
+		   window.onload = function() {
+            const decounce = function(fn, delay) {
+                let timer = null
+                return function() {
+                    let  _this  = this
+                    clearTimeout(timer) // 每次调用debounce函数都会将前一次的timer清空，确保只执行一次
+                    timer = setTimeout(() => {
+                        fn.apply(_this)
+                    }, delay)
+                }
+            }
+
+            let num = 0
+            function scrollTap() {
+                num++
+                console.log('num为'+num)
+            }
+           document.addEventListener('scroll', decounce(scrollTap, 1000))
+          //  document.addEventListener('scroll', scrollTap)
+        }
+
+	</script>
+</html>

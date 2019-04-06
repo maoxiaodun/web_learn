@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+        	作者：2532546897@qq.com 刘进文
+        	时间：2018-11-24  下午
+        	描述：js对象创建的几种方式
+        -->
+	</body>
+	<script>
+		   /*
+		    * 1.Object构造函数创建
+		    */
+		     var Dog = new Object();
+		     Dog.name = "peter";
+		     Dog.bark =function(){
+		     console.log(" my name is "+Dog.name);
+		     }
+		     Dog.bark();
+		     /*
+		      * 2.对象字面量
+		      */
+		      var Cat = {
+		     	name:"tony",
+		     	age :"5",
+		        bark : function(){
+		        	console.log("i am a cat" );
+		         }
+		       }
+		       Cat.bark();
+		       /*
+		        * 3.工厂模式创建对象
+		        */
+		        function createObj(name,age){
+		        	var obj = new Object();
+		        	obj.name = name;
+		        	obj.age = age;
+		        	obj.bark = function(){
+		        		console.log("hello i am createObj,i am "+obj.age+" old");
+		        	}
+		        	return obj; //返回一个obj
+		        }
+		        
+		        var obj = createObj("pony","33");
+		        obj.bark();
+		         /*
+		          * 4.构造函数创建
+		          */
+		          function Person(name,age){
+		          	this.name = name;
+		          	this.age  = age;
+		          	this.bark = function(){
+		          		console.log("hello i am construct");
+		          	}
+		          }
+		          var child = new Person("sily","18");
+		          console.log(child.name);
+		          /*
+		           * 5.原型创建
+		           */
+		          function Animal(){}
+		          Animal.prototype.name = "peter";
+		          Animal.prototype.age  =  10;
+		          Animal.prototype.bark = function(){
+		          	console.log("hello, i am a prototype function");
+		          }
+		          var fish = new Animal();
+		          fish.bark();
+		          /*
+		           * 6.原型构造
+		           */
+		           两种结合
+	</script>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js学习</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 作者 ：刘进文
+		 * 时间：2018.11.26
+		 * 内容描述：js重载
+		 */
+		// js本身是不存在重载的，但可以通过arguments这个参数实现，在面向对象语言当中，重载的意思指根据参数的类型和数量不同，执行不同的操作
+		function args(name,age,sex){
+			this.name = name;
+			this.age  = age;
+			this.sex  = sex;
+		    console.log(arguments.length);
+		    
+		}
+		//args("peter","18","man");//输出3
+		
+	   // 如果要实现重载，我们可以根据参数的大小不同，而做不同的是请
+		     function add(){
+		    	var len = arguments.length;	    
+		        var a = arguments[0];
+		        var b = arguments[1];
+		        var c = arguments[2];
+		    	switch(len){
+		    		case  1:
+		    	         
+		    		     console.log(a);
+		    		     break;
+		    		case  2:
+		    		      	    		  
+		    		      console.log(a+b);
+		    		      break;
+		    		case  3:
+		    		    
+		    		      console.log(a+b+c);
+		    		     break;	
+		    		default:
+		    		      break;
+		    		           
+		    	}
+		    }
+		    add(1);
+		    add(1,2);
+		    add(1,2,3);
+	    //addMethod
+			function addMethod(object, name, fn) {
+			　　var old = object[name]; 
+			　　object[name] = function() {
+				    console.log(arguments);
+				    console.log(fn.length);
+			　　　　if(fn.length === arguments.length) {
+			　　　　　　return fn.apply(this, arguments);
+			　　　　} else if(typeof old === "function") {
+			　　　　　　return old.apply(this, arguments);
+			　　　　}
+			　　}
+			   console.log(object[name]);
+			}
+			 
+			 
+			var people = {
+			　　values: ["Dean Edwards", "Alex Russell", "Dean Tom"]
+			};
+			 
+			/* 下面开始通过addMethod来实现对people.find方法的重载 */
+			 
+			// 不传参数时，返回peopld.values里面的所有元素
+			addMethod(people, "find", function() {
+			　　return this.values;
+			});
+			 
+			// 传一个参数时，按first-name的匹配进行返回
+			addMethod(people, "find", function(firstName) {
+			　　var ret = [];
+			　　for(var i = 0; i < this.values.length; i++) {
+			　　　　if(this.values[i].indexOf(firstName) === 0) {
+			　　　　　　ret.push(this.values[i]);
+			　　　　}
+			　　}
+			　　return ret;
+			});
+			 
+			// 传两个参数时，返回first-name和last-name都匹配的元素
+			addMethod(people, "find", function(firstName, lastName) {
+			　　var ret = [];
+			　　for(var i = 0; i < this.values.length; i++) {
+			　　　　if(this.values[i] === (firstName + " " + lastName)) {
+			　　　　　　ret.push(this.values[i]);
+			　　　　}
+			　　}
+			　　return ret;
+			});
+			 
+			// 测试：
+		    console.log(people.find()); //["Dean Edwards", "Alex Russell", "Dean Tom"]
+			console.log(people.find("Dean")); //["Dean Edwards", "Dean Tom"]
+			console.log(people.find("Dean","Edwards")); //["Dean Edwards"]*/
+	 
+	</script>
+</html>

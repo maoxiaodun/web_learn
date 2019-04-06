@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+	</head>
+	
+	<body>
+		<div id="vue_det">
+			<h1>site:{{site}}</h1>
+			<h2>url :{{url}}</h2>
+			<h1>Alexa:{{aleax}}</h1>
+		</div>
+		<script>
+	/*
+	 * 作者：刘进文
+     * 时间: 2018.11.24 下午
+     * 内容描述：vue.js学习之基础
+	 */
+	 var data ={site:"maoxiaodun",url:"www.maoxiaodu.work",aleax:"10000"};
+	 var vm = new Vue({
+	 	el: '#vue_det', //元素id参数
+	 	data : data/*{
+	 		site:"矛小盾",
+	 		url :"www.maoxiaodun.work",
+	 		alexa:"10000"
+	 	},*/ // 数据参数
+	/* 	methods:{
+	 		details:function(){
+	 			return this.site + " -学的不是技术，更是收获";
+	 		}
+	 	} // 方法参数*/
+	 })
+	 // var vm = new Vue({选项，选项})
+	 //vm的实例属性
+	console.log(document.getElementById("vue_det") === vm.$el);
+	console.log(vm.site === data.site);
+	</script>
+	
+	</body>
+	
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css实现水平居中和垂直居中</title>
+		<style type="text/css">
+		/*	#parent{width: 100%; height: 200px; text-align: center;} //text-align  行内元素居中*/
+		/*	#parent{width: 100%; height: 200px; display: flex; justify-content: center;} //利用flex box水平居中
+			#child { width: 200px; height: 100px; border: 1px red solid; }  //行内水平居中*/
+			#parent1{width: 100%; height: 600px; border: 1px red solid;display: table-cell; vertical-align: middle;}
+			#child1{width: 200px; height: 100xp;}
+		</style>
+	</head>
+	<body>
+		<!--
+        	作者：2532546897@qq.com
+        	时间：2018-11-27
+        	描述：水平垂直居中布局 主要属性 水平居中： margin 0 auto； flex justify-content ： center;  text-align :center;(对块级元素无效)
+        	垂直居中 ： line-height   已知高度的块级元素 :首先绝地定位，相对于top50%； 但此时的中心点的距离应该是50%+50%*height； 所以用margin-top ：-50%；
+        -->
+	      <!--<div id ="parent" >
+	      	<a href="https://www.baidu.com">百度</a>
+	      	<div id="child"></div>
+	      	<div id="child"></div>
+	      	<div id="child"></div>
+	      </div>-->
+	      <div id="parent1">
+	      
+	      	<div id="child1"><a href="https://www.baidu.com" id="child2">百度</a></div>
+	      	<div id="child1"><a href="https://www.baidu.com" id="child2">百度</a></div>
+	      	<div id="child1"><a href="https://www.baidu.com" id="child2">百度</a></div>
+	      </div>
+	</body>
+	
+</html>

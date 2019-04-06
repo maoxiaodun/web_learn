@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>H5练习</title>
+	</head>
+	<body>
+		<!--
+        	作者：2532546897@qq.com 刘进文
+        	时间：2018-11-24
+        	描述：HTML日常练习之iframe
+        -->
+		<iframe src="https://www.qq.com" width="100%" height="100%" frameborder="0" name="iframea"></iframe>
+		<p><a href="https://www.baidu.com" target="iframea">BAIDU.COM</a></p>
+		<!--
+        	作者：2532546897@qq.com
+        	时间：2018-11-24
+        	描述：iframe的缺点
+        	iframe会阻塞页面的onload事件 和页面渲染
+        	直接设置iframe src属性，必需等iframe加载完才能加载主页面
+        	js动态设置iframe src属性（先触发onload事件 在设置iframe的src） chrome加载提升，其余一样阻塞
+                        浏览器                            Chrome  Firefox  Safari  IE11
+        	阻塞主页面渲染             false    true    true    true
+        	阻塞主页面onload     true     true    true   true
+        	原因 唯一的连接池 IE6 7 HE firefox 只有两个，同一个域名同时只能开两个连接，新版本safari3 和op9
+        	有4个 chorme 和ie8 firefox3 可以有6个
+        -->
+            <!--
+            	作者：2532546897@qq.com
+            	时间：2018-11-24
+            	描述：iframe跨域
+            	document.domain是比较常用的跨域方法。实现最简单但只能用于同一个主域下不同子域之间的跨域请求，比如 foo.com 和 img.foo.com 之间，img1.foo.com 和 img2.foo.com 之间。只要把两个页面的document.domain都指向主域就可以了，比如document.domain='foo.com';。
+				设置好后父页面和子页面就可以像同一个域下两个页面之间访问了。
+				父页面通过ifr.contentWindow就可以访问子页面的window，子页面通过parent.window或parent访问父页面的window，接下来可以进一步获取dom和js。
+
+            -->
+	</body>
+</html>

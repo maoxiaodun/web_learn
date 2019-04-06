@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<p>Hello World</p>
+	</body>
+	<script>
+		/*
+		 * 11.23 学习笔记
+		 * js 继承
+		 * autor ： 刘进文
+		 * 
+		 */     
+		/*
+		 *  首先定义父类
+		 * 
+		 */
+		function Animal (name = 'Animal'){
+			this.name = name;
+			this.play = function(){
+				console.log( this.name+"can play");
+			}
+		} // 定义了name 属性和play方法
+		Animal.prototype.say = function(){
+			console.log("hello,i can speak Animal language")
+		} 
+		// 在原型链上挂载了 say 方法
+		/*
+		 * 原型链继承，将父类的实例作为子类的原型
+		 * 优点 1. 非常纯粹的继承关系 实例是子类的实例 也是父类的实例
+		 *      2. 父类新增原型方法/原型属性 子类都能访问到
+		 *      3. 简单 
+		 * 缺点   1.要想为子类新增属性和犯法，必需要在new Animal()语句执行之后
+		 *      2.无法实现多继承
+		 *      3.来自原型的所有属性被所有实例共享
+		 *      4.创建子类实例时,无法想父类构造函数传参
+		 */
+		function Cat(){
+			
+		}
+		Cat.prototype = new Animal();
+		Cat.prototype.name = 'lowcat';
+		
+	/*	var cat = new Cat();
+		console.log(cat.name);
+		console.log(cat.say());
+		console.log(cat.play());
+		console.log(cat instanceof Animal);
+		console.log(cat instanceof Cat);*/
+		/*
+		 * 构造继承
+		 * 使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型
+		 *  优点 ：1. 解决了原型继承中所有子类实例共享父类的属性与方法
+		 *        2. 创建子类实例是，可以向父类传递参数
+		 *        3. 实现了多继承
+		 *  缺点  ：1.实例斌不是父类的实例，只是子类的实例
+		 *         2.只能继承父类的实例属性和方法，不能继承原型属性方法
+		 *         3.无法实现函数复用，每个子类都有父类实例函数的副本，影响性能
+		 *         此继承方式使用了call函数 改变当前子类构造函数的运行环境，所有子类能够访问到父类的方法
+		 *         但却不能访问原型链，因为在原型链上并没有实质的改变；
+		 */
+		 function Dog(name = 'pony'){
+		 	Animal.call(this);
+		 	this.name = name ;
+		 }
+		/* var dog = new Dog("tony");
+		 console.log(dog.name);
+		 console.log(dog.play());
+		 //console.log(dog.say());
+		 console.log(dog instanceof Animal);
+		 console.log(dog instanceof Dog);*/
+		/*
+		 * 实例继承 为父类实例添加新特性，作为子类实例返回 也称为 工厂模式构造
+		 *   优点：1.不限制调用方式，不管是new 还是直接调用 返回的对象具有相同的效果
+		 *   缺点：1.实例是父类的实例，不是子类的实例
+		 *         2.不支持多继承
+		 *
+		 * 
+		 */
+		 function Fish (name = "fish") {
+		 	var obj = new Animal();
+		 	obj.name = name;
+		 	return  obj;
+		 }
+	/*	var fish = new Fish("fish");
+		 console.log(fish.name);
+		 console.log(fish.play());
+		 console.log(fish.say());
+		 console.log(fish instanceof Animal);
+		 console.log(fish instanceof Dog);*/
+		/*4.拷贝继承 将父类的属性 都复制到子类的原型上
+		 *  优点 1.支持多继承 （多复制几个父类）
+		 *  缺点 1.效率低，用了遍历copy（内存占用高）
+		 *      2.无法获取父类的不可枚举方法（在对象中的atrributes object(属性描述对象）可以设置对象属性的状态）
+		 */
+		  function Mouse(name ="mouse"){
+		  	var animal = new Animal();
+		  	for(var p in animal){
+		  		Mouse.prototype[p] = animal[p];
+		  	}
+		  	Mouse.prototype.name = name;
+		  }
+        /*var mouse = new Mouse("Jack");
+		 console.log(mouse.name);
+		 console.log(mouse.play());
+		 console.log(mouse.say());
+		 console.log(mouse instanceof Animal);
+		 console.log(mouse instanceof Dog)*/
+		 /*
+		  * 组合继承 通过调用父类的构造，继承父类的属性并保留传参特点
+		  * 然后通过将父类实例作为子类原型，得以复用父类原型的方法 
+		  * 缺点 ：调用了两次父类构造韩式，生成了两分实例，
+		  */
+		 /*
+		  * 寄生组合继承 通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类构造的时候
+		  * 就不会实例化两次父类的属性和方法，避免了组合继承的缺点
+		  */
+		   function Bird(name ="bird"){
+		   	Animal.call(this,name);
+		   	this.name = name;
+		   }
+		 /*  (function(){
+		   	  var Obj = function(){}; //创建一个空对象
+		   	  Obj.prototype = Animal.prototype; // 把父类的原型赋值一份给空对象的原型
+		   	  Bird.prototype  = new Obj(); // 把
+		   	  
+		   })();*/
+		   function copyPrototype(father,child){
+		   	var prototypes = Object.create(father.prototype);
+		   	    prototypes.constructor = child;
+		   	    child.prototype = prototypes;
+		   }
+		   copyPrototype(Animal,Bird);
+		  var bird = new Bird();
+		 console.log(bird.name);
+		 console.log(bird.play());
+		 console.log(bird.say());
+		 console.log(bird instanceof Animal);
+		 console.log(bird instanceof Bird)
+	</script>
+</html>

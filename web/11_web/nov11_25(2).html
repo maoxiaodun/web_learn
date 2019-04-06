@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js学习</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 作者：刘进文
+		 * 时间：2018.11.25 下午
+		 * 内容描述：js之原型链
+		 */
+		  var obj = {};
+		  function Animal(name,age){
+		  	this.name = name;
+		  	this.age  = age;
+		  	this.bark = function(){
+		  		console.log("wang wang wang !");
+		  	}
+		  }
+		  
+		  var cat = new Animal("peter");
+		  var fish = new Animal("peter");
+		  console.log(cat.name);
+		  console.log(fish.name);
+		  fish.name = "tony";
+		  console.log(cat.name);
+		  console.log(fish.name);
+		  cat.bark();
+		  console.log(obj.__proto__.__proto__);
+		   console.log(obj.__proto__ === Object.prototype);
+		   console.log(cat.__proto__ === Animal.prototype);
+		   console.log(Animal.prototype.__proto__ === Object.prototype)
+		   console.log(Object.__proto__.prototype);
+			   function Dog(name="dog"){
+			   	 Animal.call(this,name);
+			   	 this.say = function(){
+			   	 	console.log("hello");
+			   	 }
+			   }
+			   function copyPrototype(father,child){
+		   	   var prototypes = Object.create(father.prototype);
+		   	    prototypes.constructor = child;
+		   	    child.prototype = prototypes;
+		   }
+			    
+			   	
+			   var dog = new Dog();
+			   console.log(dog.bark());
+		       console.log(dog.say());
+		       console.log(dog.a())
+		   /*
+		    *  js原型链中有两个重要的属性__proto__ 和  prototype，prototype是每个构造函数所拥有的属性，该属性指向构造函数的原型，
+		    */
+	</script>
+	  
+</html>

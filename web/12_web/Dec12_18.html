@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js之学习 ES6</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 时间 ： 2018.182.18
+		 * 作者 ： 刘进文
+		 * 内容描述 ： js学习之es6
+		 * 
+		 */
+	    /*	1.数字扩展 幂函数运算
+	     * 
+	     */
+	     let result = 5**3;
+	     console.log(result); // ** 表示幂运算符，*= 表示  a **= a 表示  a= a* a
+	     let a = 3;
+	     console.log(a *= a) // 优先级较高，不能负数计算
+	     // 2.numner方法
+	      console.log(Number.isFinite(NaN)) //判断值是否为有限的
+	/*      (function(global){
+	      	 var global_isFinite = global.isFinite();
+	      	 Object.defineProperty(Number,'isFinite',{
+	      	 	value : function isFinite(value){
+	      	 		return typeof value === 'number' && global_isFinite(value);
+	      	 	},
+	      	 	configurable: true,
+                 enumerable: false,
+	      	 	writeable  : true
+	      	 });
+	      })(this); */// es5 中的代码部署 此外Number对象还将parseInt 和 parseFloat 添加到Number对象上
+	      console.log(Number.parseInt == parseInt);
+	      var num = 3.1596;
+	      console.log(num.toFixed(2)); // 保留两位小数；
+	      //2.math 对象
+	      console.log(Math.trunc(4.6)); // 舍去小数点部分，如果值为非数值会进行隐式转换
+	      Math.trunc = Math.trunc || function(x){
+	      	return x<0?Math.ceil(x) : Math.floor(x);
+	      };
+	      console.log(Math.sign(-8));//判断当前的值是否为负数，如果是则返回-1 0 1 NaN
+	      console.log(Math.cbrt(8));//计算立方根
+	      //二、字符串扩展
+	      var msg = "helloeveryone";
+	      console.log(msg.startsWith('hello'));//判断开始的字符串
+	      console.log(msg.endsWith('one')); //判断结尾是否含有字符串
+	      console.log(msg.includes('hello'));//判断字符串是否含有该文本
+	      var x ="nihao";
+	      console.log(x.repeat(8));//指定的字符串重复
+	      
+	</script>
+</html>

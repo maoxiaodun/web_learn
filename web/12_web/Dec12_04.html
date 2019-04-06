@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue.js学习</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id ="input">
+			<textarea v-focus style="width: 200px; height: 100px;"></textarea>
+		</div>
+		<div id="exp" v-demo:foo.a.b="message"></div>
+		<div id='test'>
+			<p>原始字符："{{message}}"</p>
+			<p>反转字符："{{reversedmessage}}"</p>
+			
+		</div>
+		<div id='test2'>
+			<p>计算属性 ："{{time1}}"</p>
+			<p>方法："{{time2}}"</p>
+		</div>
+	</body>
+	<script>
+		/*
+		 * 时间 ： 2018.12.04 晚上
+		 * 作者 ： 刘进文
+		 * 内容描述 : vue.js 自定义指令学习
+		 */
+	/*	Vue.directive('focus',{
+			inserted : function(el){
+				el.focus(); // 自动获取焦点
+		}) // 全局方法注册*/
+		// 局部方法注册
+	
+		var vm = new Vue({
+			el : '#input',
+			directives :{
+				focus  :{
+					instered : function(el){
+						el.focus();
+					}
+				}
+			}
+		})
+		Vue.directive('demo',{
+			bind : function(el,binding,vnode){
+				var s = JSON.stringify;
+				el.innerHTML = 
+				 'vaule'  + s(binding.value) + '<br>' +
+				 'expression：' + s(binding.expression) + '<br>' +
+				 'modifiers :'  + s(binding.modifiers) + '<br>' +
+				 'vnode keys' + Object.keys(vnode).join(',') 
+			}
+		})
+		new Vue({
+			el : '#exp',
+			data : {
+				message : 'hello'
+			}
+		})
+		/*
+		 * 时间： 2018.12.04
+		 * 作者 ：刘进文
+		 * 内容描述：vue实例对象的数据选项
+		 * 
+		 */
+		var vm = new Vue({
+  el: '#test',
+  data: {
+    message: '小火柴'
+  },
+
+  methods: {
+    reversedmessage: function () {
+      return this.message.split('').reverse().join('')
+    }
+  }    
+})
+ var vm = new Vue({
+ 	data :{a:1},
+ 	computed : {
+ 		aAdd : function(){
+ 			return this.a + 5;
+ 		},
+ 		aSub : {
+ 			get : function(){ // 无参数时的返回值
+ 				return this.a + 3;
+ 			},
+ 			set : function(x){ // 有参数时候的返回值
+ 				return this.a =  x - 1;
+ 			}
+ 			
+ 		}
+ 	}
+ })
+		console.log(vm.aSub);
+		vm.aSub = 8;
+		console.log(vm.a);
+		console.log(vm.aAdd);
+		var vm = new Vue({
+			el : '#test2',
+			computed :{
+				time1 : function(){
+					return (new Date()).toLocaleDateString()
+				}
+			},
+			methods : {
+				time2 : function(){
+					return (new Date()).toLocaleDateString();
+				}
+			}
+		})
+	</script>
+</html>

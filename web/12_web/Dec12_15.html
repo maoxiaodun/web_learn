@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js之惰性函数</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 时间 ： 2018.12.15
+		 * 作者 ： 刘进文
+		 * 内容描述 ： js学习之惰性函数
+		 */
+		 // 函数重写
+		   function a(){
+		   	console.log("this is a");
+		   }
+		   function a(){
+		   	console.log("this is other a");
+		   }
+		   a();
+		   //同名函数被覆盖
+		   function b(){
+		   	console.log('b');
+		   	b1 = function(){
+		   		console.log('other b');
+		   	}
+		   }
+		   b(); // 执行第一个b函数
+		   b1();// 执行第二个函数
+		   function person(name){
+		   	 if(name=="jack"){
+		   	 	return  person = function(){
+		   	 		console.log("this is jack");
+		   	 	}
+		   	 }else if(name == "tom"){
+		   	 	return person = function(){
+		   	 		console.log("this is tom");
+		   	      }
+		   	 	}else{
+		   	 	return person = function(){
+		   	 		console.log("this is others");
+		   	 } 
+		   }
+		   	 }
+		   	 person("jack")();
+		   	 console.log(1);
+		   	 person();
+	</script>
+</html>

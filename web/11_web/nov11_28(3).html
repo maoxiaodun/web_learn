@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js之柯里化</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 时间 ：2018.11.28 晚上
+		 * 作者 ：刘进文
+		 * 内容描述 ： js函数柯里化
+		 */
+		 function add(a,b,c){
+		 	return a+b+c;
+		 }
+		 add(1,2,3);//直接调用输出
+		 add(1)(2)(3);//参数分开调用输出
+		 function add(a){
+		 	return function(b){
+		 		return function(c){
+		 			return a + b + c;
+		 		}
+		 	}
+		 }
+		 var curry = function(func){
+		 	var args = [].slice.call(arguments,1); // 首先我们对通用函数截取参数
+		 	return function(){
+		 		var newArgs = args.concat([].slice.call(arguments)); //将每次添加的函数连接起来
+		 		return func.apply(this,newArgs); //将此函数的数组赋给目标函数 并传入参数
+		 	}
+		 }
+		 function adds(a,b){
+		 	return a + b;
+		 }
+		/* var addcurry =curry(adds,5 ,3);
+		  console.log(addcurry(3));*/
+		 /*var subcurry = curry(sub,5);
+		 
+		 console.log(subcurry(3));*/
+		 
+		
+		 var currys = function(fn,args){
+		 	var length = fn.length; //计算期望函数的参数长度
+		    args =args || [];
+		 	return function(){
+		 		newArgs = [].slice.call(arguments); //将自身函数参数赋给新参数
+		 		
+		 		[].push.apply(newArgs,args); //将上回保留的参数push进新的数组
+		 		
+		 		if(newArgs.length<length){ //判断当前函数的参数是否与期望函数参数一致
+		 			return curry.call(this,fn,newArgs); //如果不够，递归调用
+		 		}else{
+		 			
+		 			return fn.apply(this,newArgs); // 如果够，就执行期望函数
+		 		}
+		 	}
+		 }
+		 var subcurry = currys(adds);
+		 console.log(subcurry(1)(2));
+	</script>
+</html>

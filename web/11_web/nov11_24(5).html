@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue的模板</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--
+        	作者：2532546897@qq.com 刘进文
+        	时间：2018-11-24 下午
+        	描述：vue模板
+        -->
+	<!--	<div id="app">
+			<p>{{message}}</p>
+		</div>
+		<script>
+			new Vue({
+			  el: '#app',
+			  data: {
+			    message: 'Hello Vue.js!'
+			  }
+			})
+	    </script>-->
+	    <div id="app">
+	       <div v-html="message"></div><!-- v-html指令是用来输出html标签-->
+	    </div>
+	    <div id="app1">
+	    	<p>{{message}}</p>
+	    </div>
+	    <div id="app2"> 
+	    	<label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1"> <!-- v-model 用来在input、sletct、text、checkbox、radio等表单控件上创建双向数据绑定-->
+	    	<br /><br />
+	    	<div v-bind:class="{'class':class1}">
+	    		改变颜色区域
+	    	</div>
+	    </div>
+	    <script>
+	    	new Vue({
+	    		el:'#app',
+	    		data:{
+	    			 message: /*'<h1>菜鸟教程</h1>'*/ '你好啊'
+	    		}
+	    	})
+	    	new Vue({
+	    		el:"#app1",
+	    		data:{
+	    			message:'<h1>菜鸟教程</h1>'
+	    		}
+	    	})
+	    	new Vue({
+	    		el:'#app2',
+	    		data:{
+	    			class1:false
+	    		}
+	    	});
+	    </script>
+	</body>
+	 <style>
+	 	.class{background: red; color: green;}
+	 </style>
+</html>

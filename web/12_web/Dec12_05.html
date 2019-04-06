@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js值作用域链</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var test = "global test";
+		function foo(){
+			var test = "local test";
+			var bar = function(){
+				console.log(test);
+			}
+			bar();
+		}
+      foo()
+	var test1 = "global test1";
+		function foo1(){
+			var scopes = "local scotest1pe";
+			var bar = function(){
+				console.log(test1);
+			}
+			return bar;
+		}
+		foo1()();
+		function test(a){
+			var b = a+2;
+			var bar = function(c){
+				console.log(a,b,c);
+			}
+			bar(b*a);
+		}
+		test(2);
+		var Esc = [];
+		Esc.push(gloabContext);//首先全局上下文先压入栈底
+		Esc.push(test); //其次是test的执行上下文
+		Esc.push(bar);//最后入栈的是bar
+		Esc.pop(test);//然后bar 执行完之后就弹出 变量回收，闭包变量会存在
+		Esc.pop(test);// test 弹出
+		Esc.pop(gloabContext);// 浏览器或者也页面关闭时 全局执行环境清空
+		function foo(){
+	var a = 1;
+	return function(b){
+		console.log(a+b);
+	}
+}
+foo(2);
+	</script>
+</html>

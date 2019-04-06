@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素浮动</title>
+	</head>
+	<body>
+		<!--
+        	作者：2532546897@qq.com
+        	时间：2018-11-27
+        	描述：清除浮动
+        	1.clear :both; 清除左右两边的浮动，并且会致使margin失效
+        	2.如果是子元素浮动，给父元素加一个height 
+        	3.overflow 当子元素的高度无法撑开父元素的时候，overflow
+        	4.加一个空标签 隔开两个浮动元素
+        -->
+		<div id="d1"><img src="img/tou.png"/></div>
+		<div id="d2"><img src="img/tou.png"/></div>
+	</body>
+	<style type="text/css">
+		#d1{height: 200px; width: 200px; border: 1px solid red; float: left;}
+		#d2{height: 200px; width: 200px; border: 1px solid blue; overflow:auto:;;}
+	</style>
+	<script>
+		 var d = document.getElementById('d1');
+		 console.log(d)
+	</script>
+</html>

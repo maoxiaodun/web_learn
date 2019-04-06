@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{text-align: center;}
+			#cav{margin: 0 auto;}
+			#cir{border: 1px black solid;}
+		</style>
+	</head>
+	<body>
+		<!--
+        	作者：2532546897@qq.com 刘进文
+        	时间：2018-11-24 上午
+        	描述：Html之canvas
+        	arc(x,y,r,sAngle,eAngle.conterclockwise)
+        	arc(横坐标，纵坐标，半径，起始角度，结束角度，顺时针or逆时针)
+        -->
+        <div id="cav">
+        	<canvas id="cir" width="400px" height="300px"></canvas>
+        </div>
+	</body>
+	<script>
+		var cir = document.getElementById("cir");
+		var cirs = cir.getContext("2d");
+		cirs.beginPath();
+		cirs.arc(200,150,70,0,1.5*Math.PI,true);
+		cirs.strokeStyle ="red";
+		cirs.stroke();
+		cirs.closePath();
+	</script>
+</html>

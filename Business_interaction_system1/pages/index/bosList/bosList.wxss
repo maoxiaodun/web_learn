@@ -1,7 +1,0 @@
-page {
-  background:whitesmoke !important;
-  font-size: 28rpx;
-  color: #333;
-  line-height: 1;
-  font-family: Helvetica Neue, Helvetica, sans-serif;
-}
