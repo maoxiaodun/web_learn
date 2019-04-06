@@ -1,0 +1,56 @@
+<!--pages/index/bosInfo/bosInfo.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed none-bg text-white bg-img" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-image:url(https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg);">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 商机信息
+    </navigator>
+  </view>
+</view>
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>客户名称</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_name}}</text>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>商机名称</text>
+      <text class='text-grey' style='margin-left:30px'>{{bos_name}}</text>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>联系人姓名</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_name}}</text>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>联系人电话</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_linkman}}</text>
+      <button class='icon-phone text-orange' style='margin-right:0px'></button>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>客户地址</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_linkman_role}}</text>
+      <button class='icon-locationfill text-orange' style='margin-right:0px'></button>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>创建时间</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_phone_num}}</text>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>支撑负责人经理</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_address}}</text>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>商机类型</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_address}}</text>
+  </view>
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+      <text class='custListId'>商机详细概述</text>
+      <text class='text-grey' style='margin-left:30px'>{{cust_address}}</text>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class='title'>商机状态</view>
+    <picker bindchange="PickerChangeState" name="state_name" value="{{state_id}}" range="{{state_Name}}">
+      <view class="picker">
+        {{state_id?state_Name[state_id]:'请点击此栏进行选择'}}
+      </view>
+    </picker>
+  </view>
+</view>

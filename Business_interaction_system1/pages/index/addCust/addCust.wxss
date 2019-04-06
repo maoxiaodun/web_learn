@@ -1,0 +1,9 @@
+.time{
+ border: 5px solid #ffffff;
+  height: 110rpx;
+  line-height: 110rpx;
+  margin-bottom:4rpx;
+  text-align: center; 
+  background: #f4932a;
+  color: #ffffff;
+}
